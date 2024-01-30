@@ -49,7 +49,7 @@ struct ContentView: View {
     
     static func showAIAlert(won: SquareStatus, reset: @escaping () -> Void) -> Alert {
         return Alert(title: Text("Game Over"),
-                     message: Text(won != .empty ? won == .x ? "You Won! Terrific!" : "AI Won!" : "Draw!"),
+                     message: Text(won != .empty ? won == .x ? "You Won!" : "AI Won!" : "Draw!"),
                      dismissButton: Alert.Button.destructive(Text("Ok"), action: reset)
         )
     }
