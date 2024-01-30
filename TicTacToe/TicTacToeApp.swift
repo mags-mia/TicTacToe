@@ -6,9 +6,22 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
+}
 
 @main
 struct TicTacToeApp: App {
+    // register app delegate for Firebase setup
+      @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     let viewModel = ViewModel()     //initializes a ViewModel and a TicTacToeModel
     let ticTacToe: TicTacToeModel
     
@@ -19,6 +32,9 @@ struct TicTacToeApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(viewModel: viewModel, ticTacToe: ticTacToe)
+            NavigationView {
+                    //ContentView()
+                  }
         }
     }
 }
